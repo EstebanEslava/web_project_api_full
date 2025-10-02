@@ -1,0 +1,19 @@
+.content {
+    max-width: 880px;
+    margin: auto;
+    display: grid;
+}
+
+@media screen  and (max-width: 968px){
+
+    .content{
+        max-width: 560px;
+    }
+}
+
+@media screen and (max-width: 620px){
+    
+    .content {
+        max-width: 282px;
+    }
+}

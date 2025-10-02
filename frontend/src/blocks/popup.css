@@ -1,0 +1,247 @@
+.popup {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 2;
+}
+
+.popup_opened {
+  display: flex;
+}
+
+.popup__container {
+  max-width: 430px;
+  max-height: 370px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  font-family: "inter";
+  position: relative;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.popup__container-image {
+  min-width: 433px;
+  min-height: 530px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  font-family: "inter";
+  position: relative;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.popup__button-close {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  transform: rotate(45deg);
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+
+.popup__button-close:hover {
+  opacity: 60%;
+}
+
+.popup__title {
+  margin-left: 36px;
+  margin-top: 34px;
+  margin-bottom: 54px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+}
+
+.popup__title-avatar {
+  min-width: 330px;
+  min-height: 23px;
+  margin: 34px 64px 45px 36px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+}
+
+.popup__title-alert {
+  min-width: 358px;
+  min-height: 23px;
+  margin: 34px 36px 14px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+}
+
+.popup__title-image {
+  margin-bottom: -10px;
+  color: rgba(255, 255, 255, 1);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  position: absolute;
+  bottom: -10px;
+}
+
+.popup__input {
+  max-width: 358px;
+  width: 100%;
+  margin-left: 35px;
+  margin-top: 9px;
+  margin-bottom: 6px;
+  font-family: "inter";
+  border: 0;
+  border-bottom: 1px inset #000;
+}
+
+.popup__input:invalid {
+  border-bottom: 1px solid red;
+}
+
+.popup__input:valid {
+  border-bottom: 1px solid green;
+}
+
+.popup__error {
+  max-width: 358px;
+  width: 100%;
+  margin-left: 35px;
+  margin-bottom: auto;
+  font-size: 12px;
+  font-family: "inter";
+  font-weight: 400;
+  line-height: 100%;
+  color: red;
+  display: none;
+}
+
+.popup__error_active {
+  display: inline-block;
+}
+
+.popup__image {
+  min-width: 433px;
+  min-height: 530px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+.popup__button-submit {
+  max-width: 358px;
+  width: 100%;
+  height: 50px;
+  margin-top: 24px;
+  margin-left: 36px;
+  margin-bottom: 37px;
+  font-family: "inter";
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+  background: #000;
+}
+
+.popup__button-submit_disabled {
+  background-color: #ccc;
+  opacity: 0.6;
+}
+
+.popup__button-submit:hover {
+  opacity: 60%;
+}
+
+@media screen and (max-width: 968px) {
+  .popup {
+    min-width: 560px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .popup {
+    min-width: 282px;
+  }
+
+  .popup__button-close {
+    width: 22px;
+    height: 22px;
+    right: 0;
+  }
+
+  .popup__container {
+    width: 282px;
+  }
+
+  .popup__container-alert {
+    width: 282px;
+  }
+
+  .popup__container-image {
+    min-width: 340px;
+    height: 450px;
+    width: 100%;
+    font-family: "inter";
+  }
+
+  .popup__title {
+    margin-left: 22px;
+    font-size: 18px;
+  }
+
+  .popup__title-avatar {
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-left: 22px;
+    padding-right: 0px;
+    font-size: 20px;
+  }
+
+  .popup__input {
+    max-width: 238px;
+    height: 26px;
+    margin-left: 22px;
+    font-size: 14px;
+  }
+
+  .popup__error {
+    max-width: 238px;
+    width: 100%;
+    margin-left: 22px;
+    font-size: 10px;
+  }
+
+  .popup__image {
+    min-width: 330px;
+    min-height: 280px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+  }
+
+  .popup__button-submit {
+    max-width: 238px;
+    height: 46px;
+    margin-left: 22px;
+  }
+}
