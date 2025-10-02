@@ -1,0 +1,32 @@
+{
+  "name": "web_project_around_express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "lint": "npx eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EstebanEslava/web_project_around_express.git"
+  },
+  "keywords": [],
+  "author": "Esteban Eslava",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EstebanEslava/web_project_around_express/issues"
+  },
+  "homepage": "https://github.com/EstebanEslava/web_project_around_express#readme",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.18.0"
+  }
+}
