@@ -12,7 +12,6 @@ const cardSchema = new mongoose.Schema({
   link: {
     type: String,
     required: true,
-    maxlength: 30,
     minlength: 2,
     validate: {
       validator(v) {

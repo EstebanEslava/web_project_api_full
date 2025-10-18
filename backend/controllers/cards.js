@@ -1,48 +1,56 @@
 const card = require("../models/cards");
 
-function getCards(req, res) {
+function getCards(req, res, next) {
   card
     .find()
-    .then((card) => res.status(200).send(card))
+    .then((cards) => res.status(200).send(cards))
     .catch((err) => {
-      console.error("Error en getCards:", err);
-      res.status(500).send({ message: "Error al leer tarjetas" });
+      next(err);
     });
 }
 
-function cardCreate(req, res) {
+function cardCreate(req, res, next) {
   const { name, link } = req.body;
 
-  const owner = "68b275fb1355faf152ce4371";
+  const owner = req.user._id;
   card
     .create({ name, link, owner })
     .then((newCard) => res.status(201).send(newCard))
     .catch((err) => {
-      if (err.name === "ValidationError") {
+      /* if (err.name === "ValidationError") {
         return res
           .status(400)
-          .send({ message: "Datos inválidos al crear la tarjeta" });
+          .send({ message: "Datos inválidos al crear la tarjeta" }); //PREGUNTAR COMO SE MANEJARIA ESTE ERROR
       }
-      return res.status(500).send({ message: "Error en el servidor" });
+      return res.status(500).send({ message: "Error en el servidor" }); */
+      next(err);
     });
 }
 
-function cardDelete(req, res) {
+function cardDelete(req, res, next) {
   const { cardId } = req.params;
+  const userId = req.user._id;
 
   card
-    .findByIdAndDelete(cardId)
+    .findById(cardId)
     .orFail(() => {
       const error = new Error("Tarjeta no encontrada");
       error.name = "NotFoundError";
       throw error;
     })
-
-    .then((card) => {
-      return res.status(200).send({ message: "Tarjeta eliminada", card });
+    .then((foundCard) => {
+      if (foundCard.owner.toString() !== userId) {
+        const error = new Error("No puedes borrar tarjetas de otros usuarios");
+        error.name = "NotFoundError";
+        throw error;
+      }
+      return card.findByIdAndDelete(cardId).then(() => {
+        res.status(200).send({ message: "Tarjeta eliminada correctamente" });
+      });
     })
+
     .catch((err) => {
-      console.error("Error en cardDelete:", err);
+      /* console.error("Error en cardDelete:", err);
 
       if (err.name === "NotFoundError") {
         return res.status(404).send({ message: "Tarjeta no encontrada" });
@@ -51,11 +59,12 @@ function cardDelete(req, res) {
       if (err.name === "CastError") {
         return res.status(400).send({ message: "ID de tarjeta no válido" });
       }
-      res.status(500).send({ message: "Error en el servidor" });
+      res.status(500).send({ message: "Error en el servidor" }); */
+      next(err);
     });
 }
 
-function likeCard(req, res) {
+function likeCard(req, res, next) {
   card
     .findByIdAndUpdate(
       req.params.cardId,
@@ -69,7 +78,7 @@ function likeCard(req, res) {
     })
     .then((card) => res.status(200).send(card))
     .catch((err) => {
-      console.error("Error en likeCard:", err);
+      /* console.error("Error en likeCard:", err);
 
       if (err.name === "CastError") {
         return res.status(400).send({ message: "ID de tarjeta no válido" });
@@ -77,11 +86,13 @@ function likeCard(req, res) {
       if (err.name === "NotFoundError") {
         return res.status(404).send({ message: "Tarjeta no encontrada" });
       }
-      return res.status(500).send({ message: "Error en el servidor" });
+      return res.status(500).send({ message: "Error en el servidor" });*/
+
+      next(err);
     });
 }
 
-function dislikeCard(req, res) {
+function dislikeCard(req, res, next) {
   card
     .findByIdAndUpdate(
       req.params.cardId,
@@ -95,7 +106,7 @@ function dislikeCard(req, res) {
     })
     .then((card) => res.status(200).send(card))
     .catch((err) => {
-      console.error("Error en dislikeCard:", err);
+      /* console.error("Error en dislikeCard:", err);
 
       if (err.name === "CastError") {
         return res.status(400).send({ message: "ID de tarjeta no válido" });
@@ -103,7 +114,9 @@ function dislikeCard(req, res) {
       if (err.name === "NotFoundError") {
         return res.status(404).send({ message: "Tarjeta no encontrada" });
       }
-      return res.status(500).send({ message: "Error en el servidor" });
+      return res.status(500).send({ message: "Error en el servidor" }); */
+
+      next(err);
     });
 }
 
