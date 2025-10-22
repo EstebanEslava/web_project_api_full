@@ -1,5 +1,6 @@
 require("dotenv").config(); //se añadio recien
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const { errors } = require("celebrate");
 
@@ -26,6 +27,30 @@ const userPath = path.join(__dirname, "data/users.json");
 const cardsPath = path.join(__dirname, "data/cards.json");
 
 app.use(express.json());
+
+const allowedOrigins = [
+  "https://api.esteban.chickenkiller.com",
+  "https://estebanapp.chickenkiller.com",
+  "https://www.estebanapp.chickenkiller.com",
+  "http://localhost:3000",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
+app.options("*", cors());
 
 mongoose
   .connect(MONGO_URL)
@@ -62,7 +87,7 @@ app.use((err, req, res, next) => {
   }
 
   if (err.name === "ValidationError") {
-    res
+    return res
       .status(400)
       .send({ message: "Error al crear usuario", error: err.message });
   }
