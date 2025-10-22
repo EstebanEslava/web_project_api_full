@@ -119,7 +119,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "http://localhost:3000",
+  baseUrl: "https://estebanapp.chickenkiller.com",
 });
 
 export default api;
