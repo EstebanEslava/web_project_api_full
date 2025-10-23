@@ -32,6 +32,9 @@ const allowedOrigins = [
   "https://api.esteban.chickenkiller.com",
   "https://estebanapp.chickenkiller.com",
   "https://www.estebanapp.chickenkiller.com",
+  "http://api.esteban.chickenkiller.com",
+  "http://estebanapp.chickenkiller.com",
+  "http://www.estebanapp.chickenkiller.com",
   "http://localhost:3000",
 ];
 
