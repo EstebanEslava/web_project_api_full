@@ -57,8 +57,8 @@ function login(req, res, next) {
 
   User.findOne({ email })
     .select("+password")
-    .then((User) => {
-      if (!User) {
+    .then((user) => {
+      if (!user) {
         const error = new Error("Correo y contraseña requeridos");
         throw error;
       }
