@@ -71,6 +71,14 @@ function App() {
     setEmail("");
   }
 
+  function handleOpenPopup(popupData) {
+    setPopup(popupData);
+  }
+
+  function handleClosePopup() {
+    setPopup(null);
+  }
+
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
@@ -87,36 +95,33 @@ function App() {
     }
   }, [loggedIn]);
 
-  function handleOpenPopup(popupData) {
-    setPopup(popupData);
-  }
-
-  function handleClosePopup() {
-    setPopup(null);
-  }
-
   useEffect(() => {
-    api
-      .getInitialCards()
-      .then((cardsData) => {
-        setCards(cardsData);
-      })
-      .catch((err) => {
-        console.error("Error al obtener las tarjetas:", err);
-      });
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      api
+        .getInitialCards()
+        .then((cardsData) => {
+          setCards(cardsData);
+        })
+        .catch((err) => {
+          console.error("Error al obtener las tarjetas:", err);
+        });
+    }
   }, []);
 
-  /*
   useEffect(() => {
-    api
-      .getUserInfo()
-      .then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((err) => {
-        console.error("Error al obtener usuario:", err);
-      });
-  }, []);*/
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      api
+        .getUserInfo()
+        .then((data) => {
+          setCurrentUser(data);
+        })
+        .catch((err) => {
+          console.error("Error al obtener usuario:", err);
+        });
+    }
+  }, []);
 
   const handleUpdateUser = (data) => {
     api
