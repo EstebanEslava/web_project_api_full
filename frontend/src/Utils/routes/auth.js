@@ -1,4 +1,4 @@
-export const BASE_URL = "http://api.esteban.chickenkiller.com";
+export const BASE_URL = "https://api.esteban.chickenkiller.com";
 
 const handleResponse = (res) => {
   if (!res.ok) {
