@@ -106,6 +106,7 @@ function App() {
       });
   }, []);
 
+  /*
   useEffect(() => {
     api
       .getUserInfo()
@@ -115,7 +116,7 @@ function App() {
       .catch((err) => {
         console.error("Error al obtener usuario:", err);
       });
-  }, []);
+  }, []);*/
 
   const handleUpdateUser = (data) => {
     api
