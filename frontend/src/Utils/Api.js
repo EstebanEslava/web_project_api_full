@@ -119,7 +119,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "http://api.esteban.chickenkiller.com",
+  baseUrl: "https://api.esteban.chickenkiller.com",
 });
 
 export default api;
