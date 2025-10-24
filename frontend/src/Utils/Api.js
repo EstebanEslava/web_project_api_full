@@ -120,7 +120,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "http://127.0.0.1:4000",
+  baseUrl: "https://api.esteban.chickenkiller.com",
 });
-/*https://api.esteban.chickenkiller.com*/
+
 export default api;
