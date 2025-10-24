@@ -12,7 +12,11 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, process.env.JWT_SECRET);
+    payload = jwt.verify(
+      token,
+      //process.env.JWT_SECRET
+      "some-secret-key"
+    );
   } catch (err) {
     return res.status(403).send({ message: "Token inválido o expirado" });
   }

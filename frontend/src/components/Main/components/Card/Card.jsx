@@ -8,7 +8,7 @@ import ImagePopup from "../Popup/ImagePopup/ImagePopup";
 
 function Card({ data, handleOpenPopup, onCardLike, onRemove }) {
   const { currentUser } = useContext(CurrentUserContext);
-  const { name, link, isLiked = false } = data;
+  const { name, link, likes } = data;
 
   function handleLikeClick() {
     onCardLike(data);
@@ -17,7 +17,7 @@ function Card({ data, handleOpenPopup, onCardLike, onRemove }) {
   function handleRemoveClick() {
     onRemove();
   }
-
+  const isLiked = likes.length > 0;
   const imageComponent = {
     link,
     children: <ImagePopup card={{ name, link }} />,

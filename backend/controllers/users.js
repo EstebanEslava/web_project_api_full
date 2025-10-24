@@ -71,7 +71,8 @@ function login(req, res, next) {
 
         const token = jwt.sign(
           { _id: user._id },
-          process.env.JWT_SECRET || "some-secret-key",
+          // process.env.JWT_SECRET || comentado temporamente
+          "some-secret-key",
           { expiresIn: "7d" }
         );
 

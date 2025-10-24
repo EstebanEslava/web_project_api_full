@@ -86,7 +86,7 @@ function App() {
         .checkToken(token)
         .then((data) => {
           setLoggedIn(true);
-          setEmail(data.data.email);
+          setEmail(data.email);
           navigate("/");
         })
         .catch((err) => {
@@ -136,7 +136,7 @@ function App() {
   };
 
   function handleCardLike(card) {
-    const isLiked = card.isLiked;
+    const isLiked = card.likes.length > 0;
 
     const likePromise = isLiked
       ? api.removeLike(card._id)

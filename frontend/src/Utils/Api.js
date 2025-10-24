@@ -36,12 +36,13 @@ class Api {
   }
 
   editUserInfo(data) {
+    console.log(data);
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._getHeaders(),
       body: JSON.stringify({
         name: data.name,
-        about: data.occupation,
+        about: data.about,
       }),
     }).then((res) => {
       if (!res.ok) {
@@ -119,7 +120,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.esteban.chickenkiller.com",
+  baseUrl: "http://127.0.0.1:4000",
 });
-
+/*https://api.esteban.chickenkiller.com*/
 export default api;

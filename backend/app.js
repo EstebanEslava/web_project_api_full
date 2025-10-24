@@ -20,7 +20,7 @@ const { requestLogger, errorLogger } = require("./middlewares/logger");
 
 const app = express();
 
-const { PORT = 3000, MONGO_URL = "mongodb://localhost:27017/aroundb" } =
+const { PORT = 4000, MONGO_URL = "mongodb://127.0.0.1:27017/aroundb" } =
   process.env;
 
 const userPath = path.join(__dirname, "data/users.json");
@@ -28,7 +28,9 @@ const cardsPath = path.join(__dirname, "data/cards.json");
 
 app.use(express.json());
 
-const allowedOrigins = [
+app.use(cors()); /* TEMPORALMENTE*/
+
+/* const allowedOrigins = [
   "https://api.esteban.chickenkiller.com",
   "https://estebanapp.chickenkiller.com",
   "https://www.estebanapp.chickenkiller.com",
@@ -43,7 +45,7 @@ app.use((req, res, next) => {
   if (allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
-  // Optionally set other CORS headers like Access-Control-Allow-Methods and Access-Control-Allow-Headers
+
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET,HEAD,OPTIONS,POST,PUT,PATCH,DELETE"
@@ -53,13 +55,13 @@ app.use((req, res, next) => {
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
 
-  // Handle preflight requests
+
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
   next();
-});
+}); */
 
 mongoose
   .connect(MONGO_URL)
