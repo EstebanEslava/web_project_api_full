@@ -3,7 +3,7 @@ import Aprobado from "../../images/union_chulo.png";
 import NoAprobado from "../../images/Union_error.png";
 import Close from "../../images/Vector_add.png";
 
-function InfoTooltip({ isOpen, onClose, success }) {
+function InfoTooltip({ isOpen, onClose, success, message }) {
   if (!isOpen) return null;
 
   return (
@@ -20,9 +20,7 @@ function InfoTooltip({ isOpen, onClose, success }) {
           )}
         </div>
         <h3 className="tooltip__text">
-          {success
-            ? "¡Correcto! Ya estás registrado. 🎉"
-            : "Uy, algo salió mal. Por favor, inténtalo de nuevo."}
+          {success ? "¡Correcto! Ya estás registrado. 🎉" : message}
         </h3>
       </div>
     </div>

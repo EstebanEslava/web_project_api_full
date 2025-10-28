@@ -47,7 +47,7 @@ function App() {
         return res;
       })
       .catch((err) => {
-        setInfoTooltip({ isOpen: true, success: false });
+        setInfoTooltip({ isOpen: true, success: false, message: err.message });
         return Promise.reject(err);
       });
   }
@@ -121,7 +121,7 @@ function App() {
           console.error("Error al obtener usuario:", err);
         });
     }
-  }, []);
+  }, [loggedIn]);
 
   const handleUpdateUser = (data) => {
     api
@@ -249,6 +249,7 @@ function App() {
             isOpen={infoTooltip.isOpen}
             onClose={closeTooltip}
             success={infoTooltip.success}
+            message={infoTooltip.message}
           />
         </div>
       </CurrentUserContext.Provider>

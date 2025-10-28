@@ -28,7 +28,24 @@ const cardsPath = path.join(__dirname, "data/cards.json");
 
 app.use(express.json());
 
-app.use(cors()); /* TEMPORALMENTE*/
+app.use(
+  cors({
+    origin: [
+      "https://api.esteban.chickenkiller.com",
+      "https://estebanapp.chickenkiller.com",
+      "https://www.estebanapp.chickenkiller.com",
+      "http://api.esteban.chickenkiller.com",
+      "http://estebanapp.chickenkiller.com",
+      "http://www.estebanapp.chickenkiller.com",
+      "http://localhost:3000",
+    ],
+    credentials: true, // Allow cookies and authentication headers
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+/* TEMPORALMENTE*/
 
 /* const allowedOrigins = [
   "https://api.esteban.chickenkiller.com",
