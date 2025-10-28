@@ -101,7 +101,10 @@ function App() {
       api
         .getInitialCards()
         .then((cardsData) => {
-          setCards(cardsData);
+          const sortedCards = cardsData.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          );
+          setCards(sortedCards);
         })
         .catch((err) => {
           console.error("Error al obtener las tarjetas:", err);
