@@ -31,7 +31,3 @@ Este proyecto es un servidor básico desarrollado con **Express.js** que simula 
 
 - `npm run start` es para ejecución en producción sin nodemon.
 
-# Dominios
-
-www.estebanapp.chickenkiller.com
-estebanapp.chickenkiller.com
