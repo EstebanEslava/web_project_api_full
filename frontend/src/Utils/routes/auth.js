@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.esteban.chickenkiller.com";
+export const BASE_URL = "https://web-project-api-full-1-backend.onrender.com";
 
 const handleResponse = (res) => {
   if (!res.ok) {

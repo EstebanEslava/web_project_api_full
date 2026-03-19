@@ -120,7 +120,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.esteban.chickenkiller.com",
+  baseUrl: "https://web-project-api-full-1-backend.onrender.com",
 });
 
 export default api;
