@@ -38,11 +38,12 @@ app.use(
       "http://estebanapp.chickenkiller.com",
       "http://www.estebanapp.chickenkiller.com",
       "http://localhost:3000",
+      "https://web-project-api-full-1-h8o8.onrender.com",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 
 mongoose
